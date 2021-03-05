@@ -1,12 +1,21 @@
+// Built in (Node) modules
 const fs = require('fs/promises');
 const path = require('path');
 
+// Third-party modules
 const sharp = require('sharp');
-const parseConfig = require('rc');
+const ColorThief = require('colorthief');
 
-const config = parseConfig('preprocess', {
+// Config object, overridable via CLI flags, etc.
+const config = require('parse-strings-in-object')(require('rc')(
+ 'preprocess', 
+ {
   resize: true,
-})
+  getSwatches: true
+  }
+));
+
+console.info('config:', JSON.stringify(config, null, 4));
 
 const processImage = async (filePath, destination) => {
   const outputPath = path.resolve(destination, path.basename(filePath));
@@ -20,6 +29,29 @@ const processImage = async (filePath, destination) => {
         position: sharp.strategy.entropy
       }
     ).toFile(outputPath);
+}
+
+const getSwatches = async (images, destDirectory) => {
+
+  const results = await Promise.all(
+    images.map(async i => {
+      const fullPath = path.resolve(destDirectory, i);
+      try {
+        const dominantColourRGB = await ColorThief.getColor(fullPath);
+        return ({
+          dominantColour: dominantColourRGB,
+          file: i,
+          fullPath
+        });
+      } catch (e) {
+        console.error('ColorThief error:', { e, i, fullPath });
+      }
+      
+    })
+  )
+
+  return results;
+
 }
 
 const main = async() => {
@@ -52,17 +84,26 @@ const main = async() => {
     });
 
     console.log(`resized ${q.length} images`);
+  } else {
+    console.warn('skipping resize');
   }
 
-  
+  if (config.getSwatches === true) {
+    const json = path.resolve('./swatches.json');
+    console.log(`calculating dominant colours and writing to ${json} ...`);
+    const outputImages = await fs.readdir(destDirectory);
+    const swatches = await getSwatches(outputImages, destDirectory);
+    console.log(swatches);
+  } else {
+    console.warn('skipping getSwatches');
+  }
 
   return `Successfully converted ${imagesOnly.length} files`;
 
 }
 
-
 main().then(res => {
   console.log('result:', res);
 }).catch(e =>
-  console.error('main error:', se)
+  console.error('main error:', e)
 )

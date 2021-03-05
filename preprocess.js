@@ -2,10 +2,15 @@ const fs = require('fs/promises');
 const path = require('path');
 
 const sharp = require('sharp');
+const parseConfig = require('rc');
+
+const config = parseConfig('preprocess', {
+  resize: true,
+})
 
 const processImage = async (filePath, destination) => {
   const outputPath = path.resolve(destination, path.basename(filePath));
-  console.log(`processing ${filePath} \n to ${outputPath} ... \n`);
+  // console.log(`processing ${filePath} \n to ${outputPath} ... \n`);
   await sharp(filePath)
     .resize(
       {
@@ -18,25 +23,40 @@ const processImage = async (filePath, destination) => {
 }
 
 const main = async() => {
+  
   const sourceDirectory = path.resolve('./originals/unzipped');
+  const destDirectory = path.resolve('./output');
+
   const files = await fs.readdir(sourceDirectory);
   console.log(files.length);
-
-  // files.forEach(f => console.log(f, typeof f, f.toLowerCase()));
-
 
   const imagesOnly = files.filter(f => {
     const lowercase = f.toLowerCase();
     return lowercase.includes('.jpg') || lowercase.includes('.png' || lowercase.includes('.tiff'));
   });
 
-  const q = await Promise.all(imagesOnly.map(
-    src => processImage(path.resolve(sourceDirectory, src), path.resolve('./output')
-  ))).catch(e => {
-    console.error('processing error:', e);
-  });
+  if (config.resize === true) {
+    console.log('Deleting', destDirectory, '...');
+    await fs.rmdir(destDirectory, { recursive: true });
+    console.log('Done!');
+    await fs.mkdir(destDirectory);
 
-  return `Successfully converted ${q.length} files`;
+    console.log('processing', imagesOnly.length, 'files... (please wait)');
+
+    const q = await Promise.all(
+      imagesOnly.map(
+        src => processImage(path.resolve(sourceDirectory, src), destDirectory)
+      )
+    ).catch(e => {
+      console.error('processing error:', e);
+    });
+
+    console.log(`resized ${q.length} images`);
+  }
+
+  
+
+  return `Successfully converted ${imagesOnly.length} files`;
 
 }
 
@@ -44,5 +64,5 @@ const main = async() => {
 main().then(res => {
   console.log('result:', res);
 }).catch(e =>
-  console.error(e)
+  console.error('main error:', se)
 )

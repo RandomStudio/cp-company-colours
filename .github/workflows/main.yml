@@ -12,13 +12,15 @@ jobs:
       SERVER_PORT: 22
       SSH_USERNAME: staging-bot
       SSH_KEY: ${{ secrets.SSH_KEY }}
-      SOURCE_DIR: 'build'
-      TARGET_DIR: 'cpcompany-clr'
+      SOURCE_DIR: "demos/build"
+      TARGET_DIR: "cpcompany-clr"
     steps:
-      - uses: actions/checkout@v1 
+      - uses: actions/checkout@v1
       - name: Install dependencies
+        working-directory: demos
         run: yarn
       - name: Build
+        working-directory: demos
         run: yarn build
       - name: Create folders
         uses: appleboy/ssh-action@master
@@ -35,4 +37,4 @@ jobs:
           DEPLOY_KEY: ${{ env.SSH_KEY }}
           USERNAME: ${{ env.SSH_USERNAME }}
           FOLDER: "./${{ env.SOURCE_DIR }}/"
-          SERVER_DESTINATION: '/var/www/staging.random.studio/${{ env.TARGET_DIR }}/'
+          SERVER_DESTINATION: "/var/www/staging.random.studio/${{ env.TARGET_DIR }}/"

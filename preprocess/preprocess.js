@@ -97,7 +97,7 @@ const main = async () => {
     console.warn("skipping getSwatches");
   }
 
-  return `Successfully processed ${imagesOnly.length} files`;
+  return `Successfully converted ${imagesOnly.length} files`;
 };
 
 main()

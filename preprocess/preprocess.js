@@ -11,7 +11,7 @@ const config = require("parse-strings-in-object")(
   require("rc")("preprocess", {
     resize: true,
     getSwatches: true,
-    jsonPath: "../demos/public/swatches.json",
+    jsonPath: "../demos/src/swatches.json",
   })
 );
 
@@ -32,17 +32,18 @@ const processImage = async (filePath, destination) => {
 
 const getSwatches = async (images, destDirectory) => {
   const results = await Promise.all(
-    images.map(async (i) => {
-      const fullPath = path.resolve(destDirectory, i);
+    images.map(async (img, index) => {
+      const fullPath = path.resolve(destDirectory, img);
       try {
         const dominantColourRGB = await ColorThief.getColor(fullPath);
         return {
           dominantColour: dominantColourRGB,
-          file: i,
+          file: img,
           fullPath,
+          id: index,
         };
       } catch (e) {
-        console.error("ColorThief error:", { e, i, fullPath });
+        console.error("ColorThief error:", { e, i: img, fullPath });
       }
     })
   );

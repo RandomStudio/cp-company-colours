@@ -7,9 +7,15 @@ Sorting, arranging and grouping of images by colour.
 Example
 
 ```
+cd preprocess
 node preprocess.js --resize=false
 ```
 
 ## Demos (Browser-based)
 
-TODO
+Dev start
+
+```
+cd demos
+yarn start
+```

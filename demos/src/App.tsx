@@ -1,4 +1,5 @@
 import "./App.scss";
+// @ts-ignore
 import NoSort from "./NoSort";
 import SimpleSort from "./SimpleSort";
 

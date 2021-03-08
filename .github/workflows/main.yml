@@ -21,7 +21,7 @@ jobs:
         run: yarn
       - name: Build
         working-directory: demos
-        run: yarn build
+        run: CI=false yarn build
       - name: Create folders
         uses: appleboy/ssh-action@master
         with:

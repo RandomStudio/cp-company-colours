@@ -11,7 +11,7 @@ const config = require("parse-strings-in-object")(
   require("rc")("preprocess", {
     resize: true,
     getSwatches: true,
-    jsonPath: "./output/swatches.json",
+    jsonPath: "../demos/public/swatches.json",
   })
 );
 
@@ -91,13 +91,16 @@ const main = async () => {
     console.log(`calculating dominant colours and writing to ${json} ...`);
     const outputImages = await fs.readdir(destDirectory);
     const swatches = await getSwatches(outputImages, destDirectory);
-    console.log(swatches);
-    await fs.writeFile(config.jsonPath, JSON.stringify(swatches));
+    // console.log(swatches);
+
+    const destinationJson = path.resolve(config.jsonPath);
+    console.log("writing JSON to", destinationJson, "...");
+    await fs.writeFile(destinationJson, JSON.stringify(swatches));
   } else {
     console.warn("skipping getSwatches");
   }
 
-  return `Successfully converted ${imagesOnly.length} files`;
+  return `Successfully processed ${imagesOnly.length} files`;
 };
 
 main()

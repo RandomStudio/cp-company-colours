@@ -1198,8 +1198,8 @@
             186,
             144
         ],
-        "file": "arts__magazine illustration fw17.png",
-        "fullPath": "/Users/stephen/repos/cp-company/colour-experiments/demos/public/output/arts__magazine illustration fw17.png",
+        "file": "arts__magazine_illustration_fw17.png",
+        "fullPath": "/Users/stephen/repos/cp-company/colour-experiments/demos/public/output/arts__magazine_illustration_fw17.png",
         "id": 122
     },
     {
@@ -1234,13 +1234,23 @@
     },
     {
         "dominantColour": [
+            213,
+            200,
+            192
+        ],
+        "file": "arts_mosa87_on_tracery_ss2021.jpg",
+        "fullPath": "/Users/stephen/repos/cp-company/colour-experiments/demos/public/output/arts_mosa87_on_tracery_ss2021.jpg",
+        "id": 126
+    },
+    {
+        "dominantColour": [
             196,
             188,
             179
         ],
-        "file": "arts_mosa87_on tracery ss2021 2.jpg",
-        "fullPath": "/Users/stephen/repos/cp-company/colour-experiments/demos/public/output/arts_mosa87_on tracery ss2021 2.jpg",
-        "id": 126
+        "file": "arts_mosa87_on_tracery_ss2021_2.jpg",
+        "fullPath": "/Users/stephen/repos/cp-company/colour-experiments/demos/public/output/arts_mosa87_on_tracery_ss2021_2.jpg",
+        "id": 127
     },
     {
         "dominantColour": [
@@ -1248,9 +1258,9 @@
             177,
             165
         ],
-        "file": "arts_mosa87_on tracery ss2021 3.jpg",
-        "fullPath": "/Users/stephen/repos/cp-company/colour-experiments/demos/public/output/arts_mosa87_on tracery ss2021 3.jpg",
-        "id": 127
+        "file": "arts_mosa87_on_tracery_ss2021_3.jpg",
+        "fullPath": "/Users/stephen/repos/cp-company/colour-experiments/demos/public/output/arts_mosa87_on_tracery_ss2021_3.jpg",
+        "id": 128
     },
     {
         "dominantColour": [
@@ -1258,18 +1268,8 @@
             46,
             50
         ],
-        "file": "arts_mosa87_on tracery ss2021 4.jpg",
-        "fullPath": "/Users/stephen/repos/cp-company/colour-experiments/demos/public/output/arts_mosa87_on tracery ss2021 4.jpg",
-        "id": 128
-    },
-    {
-        "dominantColour": [
-            213,
-            200,
-            192
-        ],
-        "file": "arts_mosa87_on tracery ss2021.jpg",
-        "fullPath": "/Users/stephen/repos/cp-company/colour-experiments/demos/public/output/arts_mosa87_on tracery ss2021.jpg",
+        "file": "arts_mosa87_on_tracery_ss2021_4.jpg",
+        "fullPath": "/Users/stephen/repos/cp-company/colour-experiments/demos/public/output/arts_mosa87_on_tracery_ss2021_4.jpg",
         "id": 129
     },
     {
@@ -3078,8 +3078,8 @@
             211,
             195
         ],
-        "file": "objects_agents_all over the world.jpg",
-        "fullPath": "/Users/stephen/repos/cp-company/colour-experiments/demos/public/output/objects_agents_all over the world.jpg",
+        "file": "objects_agents_all_over_the_world.jpg",
+        "fullPath": "/Users/stephen/repos/cp-company/colour-experiments/demos/public/output/objects_agents_all_over_the_world.jpg",
         "id": 310
     },
     {
@@ -3088,8 +3088,8 @@
             25,
             28
         ],
-        "file": "objects_berlin_city sound.jpg",
-        "fullPath": "/Users/stephen/repos/cp-company/colour-experiments/demos/public/output/objects_berlin_city sound.jpg",
+        "file": "objects_berlin_city_sound.jpg",
+        "fullPath": "/Users/stephen/repos/cp-company/colour-experiments/demos/public/output/objects_berlin_city_sound.jpg",
         "id": 311
     },
     {
@@ -3964,13 +3964,23 @@
     },
     {
         "dominantColour": [
+            204,
+            202,
+            186
+        ],
+        "file": "visual_frassinelli_super_studio.jpg",
+        "fullPath": "/Users/stephen/repos/cp-company/colour-experiments/demos/public/output/visual_frassinelli_super_studio.jpg",
+        "id": 399
+    },
+    {
+        "dominantColour": [
             142,
             124,
             107
         ],
-        "file": "visual_frassinelli_super_studio 3.jpg",
-        "fullPath": "/Users/stephen/repos/cp-company/colour-experiments/demos/public/output/visual_frassinelli_super_studio 3.jpg",
-        "id": 399
+        "file": "visual_frassinelli_super_studio_3.jpg",
+        "fullPath": "/Users/stephen/repos/cp-company/colour-experiments/demos/public/output/visual_frassinelli_super_studio_3.jpg",
+        "id": 400
     },
     {
         "dominantColour": [
@@ -3978,9 +3988,9 @@
             183,
             213
         ],
-        "file": "visual_frassinelli_super_studio 6.jpg",
-        "fullPath": "/Users/stephen/repos/cp-company/colour-experiments/demos/public/output/visual_frassinelli_super_studio 6.jpg",
-        "id": 400
+        "file": "visual_frassinelli_super_studio_6.jpg",
+        "fullPath": "/Users/stephen/repos/cp-company/colour-experiments/demos/public/output/visual_frassinelli_super_studio_6.jpg",
+        "id": 401
     },
     {
         "dominantColour": [
@@ -3988,18 +3998,8 @@
             159,
             158
         ],
-        "file": "visual_frassinelli_super_studio 7.jpg",
-        "fullPath": "/Users/stephen/repos/cp-company/colour-experiments/demos/public/output/visual_frassinelli_super_studio 7.jpg",
-        "id": 401
-    },
-    {
-        "dominantColour": [
-            204,
-            202,
-            186
-        ],
-        "file": "visual_frassinelli_super_studio.jpg",
-        "fullPath": "/Users/stephen/repos/cp-company/colour-experiments/demos/public/output/visual_frassinelli_super_studio.jpg",
+        "file": "visual_frassinelli_super_studio_7.jpg",
+        "fullPath": "/Users/stephen/repos/cp-company/colour-experiments/demos/public/output/visual_frassinelli_super_studio_7.jpg",
         "id": 402
     }
 ]

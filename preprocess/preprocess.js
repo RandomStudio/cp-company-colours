@@ -22,7 +22,7 @@ console.info("config:", JSON.stringify(config, null, 4));
 const processImage = async (filePath, destination) => {
   const outputPath = path
     .resolve(destination, path.basename(filePath))
-    .replace(" ", "_")
+    .replace(/ /g, "_")
     .toLowerCase();
   // console.log(`processing ${filePath} \n to ${outputPath} ... \n`);
   await sharp(filePath)

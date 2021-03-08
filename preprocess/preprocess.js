@@ -101,7 +101,7 @@ const main = async () => {
 
     const destinationJson = path.resolve(config.jsonPath);
     console.log("writing JSON to", destinationJson, "...");
-    await fs.writeFile(destinationJson, JSON.stringify(swatches));
+    await fs.writeFile(destinationJson, JSON.stringify(swatches, null, 4));
   } else {
     console.warn("skipping getSwatches");
   }

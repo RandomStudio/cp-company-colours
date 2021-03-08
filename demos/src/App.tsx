@@ -21,10 +21,11 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">Colours</header>
-      {/* <NoSort swatches={SwatchData as Swatch[]} /> */}
-      <SimpleSort
+      <NoSort swatches={SwatchData as Swatch[]} />
+      {/* <SimpleSort
         canvasSize={{ width: window.innerWidth, height: window.innerHeight }}
-      />
+        swatches={SwatchData as Swatch[]}
+      /> */}
     </div>
   );
 }

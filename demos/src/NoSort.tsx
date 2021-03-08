@@ -15,6 +15,7 @@ const rgbToHex = (rgbArray: number[]): number => {
 
 const ImageWithSwatch = (s: Swatch) => (
   <div className="image-with-swatch">
+    <h1>{s.id}</h1>
     <img src={getImagePath(s.file)}></img>
     <div
       className="swatch"

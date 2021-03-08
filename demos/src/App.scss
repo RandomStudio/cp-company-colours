@@ -11,6 +11,15 @@
     z-index: 0;
     width: 128px;
     height: 128px;
+    margin: 0;
+
+    h1 {
+      position: absolute;
+      top: 0;
+      padding: 0;
+      margin: 0;
+      color: grey;
+    }
 
     .swatch {
       position: absolute;

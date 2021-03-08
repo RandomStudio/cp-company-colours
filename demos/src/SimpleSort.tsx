@@ -1,9 +1,10 @@
 import React, { useEffect, useRef } from "react";
 import * as PIXI from "pixi.js";
-import { Size } from "./App";
+import { Size, Swatch } from "./App";
 
 interface Props {
   canvasSize: Size;
+  swatches: Swatch[];
 }
 
 export const SimpleSort: React.FunctionComponent<Props> = (props: Props) => {
@@ -14,7 +15,7 @@ export const SimpleSort: React.FunctionComponent<Props> = (props: Props) => {
   });
 
   app.start();
-
+  ``;
   const ref: React.MutableRefObject<HTMLDivElement | null> = useRef(null);
 
   useEffect(() => {
@@ -31,3 +32,5 @@ export const SimpleSort: React.FunctionComponent<Props> = (props: Props) => {
   return <div ref={ref}></div>;
 };
 export default SimpleSort;
+
+const loadResources = (props: Props) => {};

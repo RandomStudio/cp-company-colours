@@ -20,7 +20,10 @@ const config = require("parse-strings-in-object")(
 console.info("config:", JSON.stringify(config, null, 4));
 
 const processImage = async (filePath, destination) => {
-  const outputPath = path.resolve(destination, path.basename(filePath));
+  const outputPath = path
+    .resolve(destination, path.basename(filePath))
+    .replace(" ", "_")
+    .toLowerCase();
   // console.log(`processing ${filePath} \n to ${outputPath} ... \n`);
   await sharp(filePath)
     .resize({

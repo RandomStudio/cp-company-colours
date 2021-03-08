@@ -5911,6 +5911,11 @@ hex-color-regex@^1.1.0:
   resolved "https://registry.yarnpkg.com/hex-color-regex/-/hex-color-regex-1.1.0.tgz#4c06fccb4602fe2602b3c93df82d7e7dbf1a8a8e"
   integrity sha512-l9sfDFsuqtOqKDsQdqrMRk0U85RZc0RtOR9yPI7mRVOa4FsR/BVnZ0shmQRM96Ji99kYZP/7hn1cedc1+ApsTQ==
 
+hex-color-utils@^0.0.3:
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/hex-color-utils/-/hex-color-utils-0.0.3.tgz#7d93f8ce8a1d78414a9f965131f3d99e312aae03"
+  integrity sha512-H3txoinsv46m6aGHF91JyHBdNd2rPkD5SF1zx+X0qrN2R1P7XG1th7eBWFkSPmLszqUDeQ7npU/sDTipebkW1Q==
+
 hmac-drbg@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/hmac-drbg/-/hmac-drbg-1.0.1.tgz#d2745701025a6c775a6c545793ed502fc0c649a1"

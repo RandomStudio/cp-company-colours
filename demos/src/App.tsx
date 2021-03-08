@@ -1,11 +1,11 @@
 import "./App.scss";
-import SimpleSort from "./SimpleSort";
+import NoSort from "./NoSort";
 
 import SwatchData from "./swatches.json";
 
 export interface Swatch {
-  id: Number;
-  dominantColour: Number[];
+  id: number;
+  dominantColour: number[];
   file: string;
   fullPath: string;
 }
@@ -14,7 +14,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">Colours</header>
-      <SimpleSort swatches={SwatchData as Swatch[]} />
+      <NoSort swatches={SwatchData as Swatch[]} />
     </div>
   );
 }

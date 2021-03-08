@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import * as PIXI from "pixi.js";
 import { Size, Swatch } from "./App";
+import { getImagePath } from "./utils";
 
 interface Props {
   canvasSize: Size;
@@ -15,8 +16,12 @@ export const SimpleSort: React.FunctionComponent<Props> = (props: Props) => {
   });
 
   app.start();
-  ``;
   const ref: React.MutableRefObject<HTMLDivElement | null> = useRef(null);
+
+  loadResources(props).then((resources) => {
+    console.log("loaded resources OK:", resources);
+    initGraphics(props, app);
+  });
 
   useEffect(() => {
     if (ref.current) {
@@ -33,4 +38,21 @@ export const SimpleSort: React.FunctionComponent<Props> = (props: Props) => {
 };
 export default SimpleSort;
 
-const loadResources = (props: Props) => {};
+const loadResources = (
+  props: Props
+): Promise<Partial<Record<string, PIXI.ILoaderResource>>> =>
+  new Promise((resolve, reject) => {
+    const loader = new PIXI.Loader();
+
+    props.swatches.forEach((s) => {
+      if (s) {
+        loader.add(`img_${s.id}`, getImagePath(s.file));
+      }
+    });
+
+    loader.load((loaders, resources) => {
+      resolve(resources);
+    });
+  });
+
+const initGraphics = async (props: Props, app: PIXI.Application) => {};

@@ -13,5 +13,8 @@
     "parse-strings-in-object": "^1.3.3",
     "rc": "^1.2.8",
     "sharp": "^0.27.2"
+  },
+  "devDependencies": {
+    "prettier": "2.2.1"
   }
 }

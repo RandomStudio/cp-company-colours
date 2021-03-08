@@ -1,5 +1,4 @@
 import React from "react";
-import * as PIXI from "pixi.js";
 import { Swatch } from "./App";
 import { fromRGB } from "hex-color-utils";
 

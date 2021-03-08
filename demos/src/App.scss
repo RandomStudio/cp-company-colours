@@ -5,13 +5,30 @@
   }
   font-family: "Courier New", Courier, monospace;
 
+  .ui {
+    position: absolute;
+    z-index: 10;
+    background-color: rgba(0, 0, 0, 0.75);
+    padding: 16px;
+    color: white;
+    button: {
+      color: grey;
+    }
+  }
+
+  $size: 48px;
+
   div.image-with-swatch {
     position: relative;
     display: inline-block;
     z-index: 0;
-    width: 128px;
-    height: 128px;
+    width: $size;
+    height: $size;
     margin: 0;
+
+    img {
+      width: $size;
+    }
 
     h1 {
       position: absolute;
@@ -23,8 +40,8 @@
 
     .swatch {
       position: absolute;
-      width: 32px;
-      height: 32px;
+      width: $size/2;
+      height: $size/2;
       z-index: 1;
       bottom: 0;
       left: 0;

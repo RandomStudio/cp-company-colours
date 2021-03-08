@@ -1,17 +1,10 @@
 import React from "react";
 import { Swatch } from "./App";
-import { fromRGB } from "hex-color-utils";
+import { getImagePath, rgbToHex } from "./utils";
 
 interface Props {
   swatches: Swatch[];
 }
-
-const getImagePath = (fileName: string) => `/output/${fileName}`;
-
-const rgbToHex = (rgbArray: number[]): number => {
-  const [r, g, b] = rgbArray.map((c) => c / 255);
-  return fromRGB(r, g, b);
-};
 
 const ImageWithSwatch = (s: Swatch) => (
   <div className="image-with-swatch">

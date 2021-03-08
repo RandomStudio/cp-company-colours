@@ -1,58 +1,83 @@
-import React, { useEffect, useRef } from "react";
-import * as PIXI from "pixi.js";
-import { Size, Swatch } from "./App";
-import { getImagePath } from "./utils";
+import { toHSLArray } from "hex-color-utils";
+import React, { useState } from "react";
+import { Swatch } from "./App";
+import { getImagePath, rgbToHex } from "./utils";
 
 interface Props {
-  canvasSize: Size;
   swatches: Swatch[];
+  debug: boolean;
 }
 
-export const SimpleSort: React.FunctionComponent<Props> = (props: Props) => {
-  const app = new PIXI.Application({
-    width: props.canvasSize.width,
-    height: props.canvasSize.height,
-    backgroundColor: 0x000055,
-  });
+export enum HSL {
+  Hue,
+  Saturation,
+  Lightness,
+}
 
-  app.start();
-  const ref: React.MutableRefObject<HTMLDivElement | null> = useRef(null);
+const getHsl = (color: number[]) => toHSLArray(rgbToHex(color));
 
-  loadResources(props).then((resources) => {
-    console.log("loaded resources OK:", resources);
-    initGraphics(props, app);
-  });
+const sortSwatches = (swatches: Swatch[], index = 0): Swatch[] =>
+  swatches
+    .filter((s) => s !== null)
+    .sort((a, b) => {
+      // const [hA, _sA, _lA] = getHsl(a.dominantColour);
+      // const [hB, _sB, _lB] = getHsl(b.dominantColour);
+      // return hA - hB;
+      return getHsl(a.dominantColour)[index] - getHsl(b.dominantColour)[index];
+    });
 
-  useEffect(() => {
-    if (ref.current) {
-      console.log("append app view");
-      ref.current.appendChild(app.view);
+const getNameForSortingType = (value: HSL) => {
+  switch (value) {
+    case HSL.Hue: {
+      return "hue";
     }
+    case HSL.Saturation: {
+      return "saturation";
+    }
+    case HSL.Lightness: {
+      return "lightness";
+    }
+    default: {
+      return "unknown/error";
+    }
+  }
+};
 
-    return () => {
-      console.log("destroy PIXI app");
-      app.destroy(true);
-    };
-  });
-  return <div ref={ref}></div>;
+export const SimpleSort: React.FunctionComponent<Props> = (props: Props) => {
+  const [sortBy, setSortBy] = useState(HSL.Hue);
+
+  const sorted = sortSwatches(props.swatches, sortBy);
+
+  return (
+    <div>
+      <div className="ui">
+        <button
+          onClick={() => {
+            setSortBy((sortBy + 1) % 3);
+          }}
+        >
+          Switch sorting type
+        </button>
+        <div>Currently: {getNameForSortingType(sortBy).toUpperCase()}</div>
+      </div>
+
+      {sorted.map((s) => (
+        <div className="image-with-swatch">
+          <img src={getImagePath(s.file)}></img>
+          {props.debug && (
+            <div
+              className="swatch"
+              style={{
+                backgroundColor: `#${rgbToHex(s.dominantColour).toString(16)}`,
+              }}
+            ></div>
+          )}
+          {props.debug && (
+            <code>{JSON.stringify(getHsl(s.dominantColour), null, 2)}</code>
+          )}
+        </div>
+      ))}
+    </div>
+  );
 };
 export default SimpleSort;
-
-const loadResources = (
-  props: Props
-): Promise<Partial<Record<string, PIXI.ILoaderResource>>> =>
-  new Promise((resolve, reject) => {
-    const loader = new PIXI.Loader();
-
-    props.swatches.forEach((s) => {
-      if (s) {
-        loader.add(`img_${s.id}`, getImagePath(s.file));
-      }
-    });
-
-    loader.load((loaders, resources) => {
-      resolve(resources);
-    });
-  });
-
-const initGraphics = async (props: Props, app: PIXI.Application) => {};

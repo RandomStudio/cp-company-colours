@@ -6,8 +6,16 @@ interface Props {
   swatches: Swatch[];
 }
 
+const getImagePath = (fileName: string) => `/output/${fileName}`;
+
 export const SimpleSort: React.FunctionComponent<Props> = (props: Props) => {
-  return <div>Swatches loaded: {props.swatches.length}</div>;
+  return (
+    <div>
+      <code>Swatches loaded: {props.swatches.length}</code>
+
+      <img src={getImagePath(props.swatches[0].file)}></img>
+    </div>
+  );
 };
 
 export default SimpleSort;

@@ -6,8 +6,8 @@ import SwatchData from "./swatches.json";
 export interface Swatch {
   id: Number;
   dominantColour: Number[];
-  file: String;
-  fullPath: String;
+  file: string;
+  fullPath: string;
 }
 
 function App() {

@@ -10,6 +10,8 @@ const ColorThief = require("colorthief");
 const config = require("parse-strings-in-object")(
   require("rc")("preprocess", {
     resize: true,
+    imagesOriginalDirectory: "./originals/unzipped",
+    imagesDestinationDirectory: "../demos/public/output",
     getSwatches: true,
     jsonPath: "../demos/src/swatches.json",
   })
@@ -52,8 +54,8 @@ const getSwatches = async (images, destDirectory) => {
 };
 
 const main = async () => {
-  const sourceDirectory = path.resolve("./originals/unzipped");
-  const destDirectory = path.resolve("./output");
+  const sourceDirectory = path.resolve(config.imagesOriginalDirectory);
+  const destDirectory = path.resolve(config.imagesDestinationDirectory);
 
   const files = await fs.readdir(sourceDirectory);
   console.log(files.length);

@@ -5,7 +5,6 @@ import { getImagePath, rgbToHex } from "./utils";
 
 interface Props {
   swatches: Swatch[];
-  debug: boolean;
 }
 
 export enum HSL {
@@ -20,9 +19,6 @@ const sortSwatches = (swatches: Swatch[], index = 0): Swatch[] =>
   swatches
     .filter((s) => s !== null)
     .sort((a, b) => {
-      // const [hA, _sA, _lA] = getHsl(a.dominantColour);
-      // const [hB, _sB, _lB] = getHsl(b.dominantColour);
-      // return hA - hB;
       return getHsl(a.dominantColour)[index] - getHsl(b.dominantColour)[index];
     });
 
@@ -45,6 +41,7 @@ const getNameForSortingType = (value: HSL) => {
 
 export const SimpleSort: React.FunctionComponent<Props> = (props: Props) => {
   const [sortBy, setSortBy] = useState(HSL.Hue);
+  const [debug, setDebug] = useState(false);
 
   const sorted = sortSwatches(props.swatches, sortBy);
 
@@ -59,12 +56,26 @@ export const SimpleSort: React.FunctionComponent<Props> = (props: Props) => {
           Switch sorting type
         </button>
         <div>Currently: {getNameForSortingType(sortBy).toUpperCase()}</div>
+        <div>
+          <input
+            id="showDebug"
+            type="checkbox"
+            value={debug === true ? "checked" : "unchecked"}
+            onChange={(e) => setDebug(e.target.checked === true)}
+          />
+          <label htmlFor="showDebug">Debug</label>
+        </div>
       </div>
 
       {sorted.map((s) => (
-        <div className="image-with-swatch">
+        <div
+          className="image-with-swatch"
+          style={{
+            backgroundColor: `#${rgbToHex(s.dominantColour).toString(16)}`,
+          }}
+        >
           <img src={getImagePath(s.file)}></img>
-          {props.debug && (
+          {debug && (
             <div
               className="swatch"
               style={{
@@ -72,7 +83,7 @@ export const SimpleSort: React.FunctionComponent<Props> = (props: Props) => {
               }}
             ></div>
           )}
-          {props.debug && (
+          {debug && (
             <code>{JSON.stringify(getHsl(s.dominantColour), null, 2)}</code>
           )}
         </div>

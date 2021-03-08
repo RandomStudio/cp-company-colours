@@ -21,7 +21,7 @@ function App() {
     <div className="App">
       <header className="App-header">Colours</header>
       {/* <NoSort swatches={SwatchData as Swatch[]} /> */}
-      <SimpleSort swatches={SwatchData as Swatch[]} debug={true} />
+      <SimpleSort swatches={SwatchData as Swatch[]} />
     </div>
   );
 }

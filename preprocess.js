@@ -11,6 +11,7 @@ const config = require("parse-strings-in-object")(
   require("rc")("preprocess", {
     resize: true,
     getSwatches: true,
+    jsonPath: "./output/swatches.json",
   })
 );
 
@@ -91,7 +92,7 @@ const main = async () => {
     const outputImages = await fs.readdir(destDirectory);
     const swatches = await getSwatches(outputImages, destDirectory);
     console.log(swatches);
-    await fs.writeFile();
+    await fs.writeFile(config.jsonPath, JSON.stringify(swatches));
   } else {
     console.warn("skipping getSwatches");
   }

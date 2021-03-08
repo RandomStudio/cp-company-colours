@@ -19,7 +19,6 @@ export interface Size {
 function App() {
   return (
     <div className="App">
-      <header className="App-header">Colours</header>
       {/* <NoSort swatches={SwatchData as Swatch[]} /> */}
       <SimpleSort swatches={SwatchData as Swatch[]} />
     </div>

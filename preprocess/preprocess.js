@@ -10,6 +10,7 @@ const ColorThief = require("colorthief");
 const config = require("parse-strings-in-object")(
   require("rc")("preprocess", {
     resize: true,
+    resizeFit: true,
     imagesOriginalDirectory: "./originals/unzipped",
     imagesDestinationDirectory: "../demos/public/output",
     getSwatches: true,
@@ -25,14 +26,22 @@ const processImage = async (filePath, destination) => {
     .replace(/ /g, "_")
     .toLowerCase();
   // console.log(`processing ${filePath} \n to ${outputPath} ... \n`);
-  await sharp(filePath)
-    .resize({
-      width: 128,
-      height: 128,
-      fit: sharp.fit.cover,
-      position: sharp.strategy.entropy,
-    })
-    .toFile(outputPath);
+
+  const resizeOptions =
+    config.resizeFit === true
+      ? {
+          width: 128,
+          height: 128,
+          fit: sharp.fit.cover,
+          position: sharp.strategy.entropy,
+        }
+      : {
+          width: 128,
+          height: 128,
+          fit: sharp.fit.contain,
+          background: { r: 255, g: 255, b: 255, alpha: 1 },
+        };
+  await sharp(filePath).resize(resizeOptions).toFile(outputPath);
 };
 
 const getSwatches = async (images, destDirectory) => {

@@ -15,7 +15,7 @@
     }
   }
 
-  $size: 48px;
+  $size: 64px;
 
   div.image-with-swatch {
     position: relative;
@@ -23,7 +23,7 @@
     z-index: 0;
     width: $size;
     height: $size;
-    margin: 0;
+    margin: $size/4;
 
     img {
       width: $size;

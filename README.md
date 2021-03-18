@@ -8,7 +8,7 @@ Sorting, arranging and grouping of images by colour.
 
 ### Demos (Browser-based)
 
-Dev start
+(This project favours the use of [yarn](https://yarnpkg.com/) over npm.)`
 
 ```
 cd demos

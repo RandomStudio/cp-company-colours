@@ -19,7 +19,7 @@ jobs:
       - name: "publish"
         run: |
           npx -p "@getmeli/cli" meli upload ./demos/build \
-            --url "https://meli.random.studio" \
+            --url "https://staging.random.studio" \
             --site "$MELI_SITE" \
             --token "$MELI_TOKEN" \
             --release "$GITHUB_SHA"

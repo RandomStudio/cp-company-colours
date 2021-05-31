@@ -24,6 +24,6 @@ jobs:
             --token "$MELI_TOKEN" \
             --release "$GITHUB_SHA"
         env:
-          MELI_SITE: "f097fae2-51a5-4977-a172-8eef6aa65b39"
+          MELI_SITE: "f08a1a93-df71-4328-8e86-cdf06f732a43"
           MELI_TOKEN: ${{ secrets.MELI_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

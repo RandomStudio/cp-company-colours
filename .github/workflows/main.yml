@@ -12,6 +12,7 @@ jobs:
         with:
           node-version: "14"
       - name: "build"
+        working-directory: demos
         run: |
           yarn install
           CI=false yarn build
